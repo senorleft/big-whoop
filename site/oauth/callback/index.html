@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OAuth Callback | Big Whoop</title>
+    <meta name="description" content="Static OAuth callback helper for Big Whoop.">
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <main class="callback-card">
+      <h1>WHOOP authorization returned</h1>
+      <p class="lede">Copy the command below into your local terminal to exchange the authorization code. This page does not send the code anywhere else.</p>
+
+      <div id="missing" class="notice" hidden>The callback URL is missing a code or state value. Re-run <code>big-whoop auth login</code> and approve access from the generated URL.</div>
+
+      <div class="field">
+        <label for="code">Code</label>
+        <input id="code" readonly autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="state">State</label>
+        <input id="state" readonly autocomplete="off">
+      </div>
+
+      <pre id="command" class="code-box">big-whoop auth exchange --code &lt;CODE&gt; --state &lt;STATE&gt;</pre>
+      <div class="actions">
+        <button class="button" id="copy" type="button">Copy command</button>
+        <a class="button secondary" href="../../privacy/">Privacy policy</a>
+      </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code") || "";
+      const state = params.get("state") || "";
+      const codeInput = document.getElementById("code");
+      const stateInput = document.getElementById("state");
+      const command = document.getElementById("command");
+      const missing = document.getElementById("missing");
+      const copy = document.getElementById("copy");
+
+      codeInput.value = code;
+      stateInput.value = state;
+
+      if (code && state) {
+        command.textContent = `big-whoop auth exchange --code ${shellQuote(code)} --state ${shellQuote(state)}`;
+      } else {
+        missing.hidden = false;
+      }
+
+      copy.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(command.textContent);
+        copy.textContent = "Copied";
+      });
+
+      function shellQuote(value) {
+        return `'${String(value).replaceAll("'", "'\\''")}'`;
+      }
+    </script>
+  </body>
+</html>
+

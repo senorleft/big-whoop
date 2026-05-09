@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Big Whoop</title>
+    <meta name="description" content="Big Whoop is a local-first personal WHOOP data export and analytics tool.">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="shell nav" aria-label="Main navigation">
+        <a class="brand" href="./">Big Whoop</a>
+        <div class="nav-links">
+          <a href="./privacy/">Privacy</a>
+          <a href="./oauth/callback/">OAuth callback</a>
+          <a href="https://developer.whoop.com/" rel="noreferrer">WHOOP Developers</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <h1>Personal WHOOP data, kept local.</h1>
+            <p class="lede">Big Whoop is a private local-first tool for exporting a user's own WHOOP data into local storage for personal analysis. It is not a public health service, medical product, or hosted analytics platform.</p>
+            <div class="actions">
+              <a class="button" href="./privacy/">Read privacy policy</a>
+              <a class="button secondary" href="./oauth/callback/">Open callback page</a>
+            </div>
+          </div>
+          <aside class="status-panel" aria-label="Project status">
+            <h2>Public site purpose</h2>
+            <dl>
+              <div>
+                <dt>Data storage</dt>
+                <dd>Local machine only</dd>
+              </div>
+              <div>
+                <dt>Audience</dt>
+                <dd>Individual personal use</dd>
+              </div>
+              <div>
+                <dt>Hosted content</dt>
+                <dd>Static pages only</dd>
+              </div>
+              <div>
+                <dt>Analytics</dt>
+                <dd>None</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell section-grid">
+          <h2>How it works</h2>
+          <div class="stack">
+            <p>The local command-line app asks the user to authorize access through WHOOP OAuth. After approval, WHOOP redirects to this static site with a short authorization code and state value.</p>
+            <p>The callback page turns those values into a local command. The user runs that command on their own computer, where tokens and health data are stored locally.</p>
+            <p>No WHOOP records, access tokens, refresh tokens, or local databases are stored on this public website.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell section-grid">
+          <h2>What this site does not do</h2>
+          <ul class="list">
+            <li>It does not collect WHOOP health records.</li>
+            <li>It does not store OAuth tokens.</li>
+            <li>It does not run tracking pixels or third-party analytics.</li>
+            <li>It does not sell, share, or disclose personal data.</li>
+            <li>It does not provide medical advice.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">Big Whoop is an independent personal project and is not affiliated with WHOOP.</div>
+    </footer>
+  </body>
+</html>
+

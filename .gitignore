@@ -1,0 +1,66 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.secret
+secrets/
+private/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Private health data, local databases, raw payloads, and exports
+data/*
+data/private/
+data/rustfs/
+data/raw/
+data/exports/
+data/backups/
+data/logs/
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+exports/
+raw/
+logs/
+backups/
+tmp/
+tmp_site_publish/
+
+# Local implementation kept out of the public GitHub repo by default.
+# Force-add intentionally if you later decide the app code should be public.
+PROJECT.md
+compose.yml
+pyproject.toml
+src/
+tests/
+docker/
+data/
+scripts/*
+!scripts/publish-site.sh
+
+# RustFS local object-store volumes
+docker/rustfs/
+rustfs-data/
+rustfs-logs/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
