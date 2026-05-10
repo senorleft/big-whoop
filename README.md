@@ -1,6 +1,6 @@
-# Big Whoop
+# Pulse Ledger
 
-Big Whoop is a small public support site for a private local-first personal WHOOP data export project. The public repository exists to provide the public website, privacy policy, and OAuth redirect page required for WHOOP Developer app setup.
+Pulse Ledger is a small public support site for a private local-first personal WHOOP data export project. The public repository exists to provide the public website, privacy policy, and OAuth redirect page required for WHOOP Developer app setup.
 
 ## Privacy Defaults
 
@@ -12,12 +12,12 @@ The `site/` directory is the only public-facing surface intended for Cloudflare 
 
 - `site/index.html`: public project summary.
 - `site/privacy/index.html`: privacy policy for the WHOOP Developer app listing.
-- `site/oauth/callback/index.html`: static OAuth callback helper that displays the local `big-whoop auth exchange` command.
+- `site/oauth/callback/index.html`: static OAuth callback helper that displays the local `pulse-ledger auth exchange` command.
 
 Deploy the site with Cloudflare Pages Git integration:
 
-- Project name: `big-whoop`
-- Repository: `senorleft/big-whoop`
+- Project name: `pulse-ledger`
+- Repository: current GitHub repository connected through Cloudflare Pages
 - Production branch: `master`
 - Framework preset: none/static
 - Root directory: repository root
@@ -26,11 +26,11 @@ Deploy the site with Cloudflare Pages Git integration:
 
 Cloudflare should upload only the contents of `site/`. It should not deploy the repository root, local CLI code, token files, SQLite databases, RustFS data, logs, backups, or exports.
 
-Cloudflare assigned the project domain `big-whoop-44o.pages.dev`. Use these URLs in the WHOOP Developer Dashboard:
+Cloudflare assigned the project domain `pulse-ledger.pages.dev`. Use these URLs in the WHOOP Developer Dashboard:
 
-- Website URL: `https://big-whoop-44o.pages.dev/`
-- Privacy Policy URL: `https://big-whoop-44o.pages.dev/privacy/`
-- Redirect URI: `https://big-whoop-44o.pages.dev/oauth/callback/`
+- Website URL: `https://pulse-ledger.pages.dev/`
+- Privacy Policy URL: `https://pulse-ledger.pages.dev/privacy/`
+- Redirect URI: `https://pulse-ledger.pages.dev/oauth/callback/`
 
 The `scripts/publish-site.sh` script remains available only as a GitHub Pages fallback:
 
@@ -46,7 +46,7 @@ Before authenticating locally, create a WHOOP Developer app at `https://develope
 
 Use these local settings:
 
-- Redirect URI: `https://big-whoop-44o.pages.dev/oauth/callback/`
+- Redirect URI: `https://pulse-ledger.pages.dev/oauth/callback/`
 - Scopes: `offline`, `read:profile`, `read:body_measurement`, `read:cycles`, `read:recovery`, `read:sleep`, `read:workout`
 
 Use the published callback URL in the local app's private environment file. Do not commit that private file.

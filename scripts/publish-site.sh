@@ -24,8 +24,8 @@ cp -R "$site_dir"/. "$tmp_dir"/
 
 git -C "$tmp_dir" init
 git -C "$tmp_dir" checkout -b "$branch_name"
-git -C "$tmp_dir" config user.name "$(git -C "$repo_root" config user.name || echo "Big Whoop Publisher")"
-git -C "$tmp_dir" config user.email "$(git -C "$repo_root" config user.email || echo "big-whoop@example.invalid")"
+git -C "$tmp_dir" config user.name "$(git -C "$repo_root" config user.name || echo "Pulse Ledger Publisher")"
+git -C "$tmp_dir" config user.email "$(git -C "$repo_root" config user.email || echo "pulse-ledger@example.invalid")"
 git -C "$tmp_dir" add .
 git -C "$tmp_dir" commit -m "Publish static site"
 git -C "$tmp_dir" remote add "$remote_name" "$(git -C "$repo_root" remote get-url "$remote_name")"
