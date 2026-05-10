@@ -12,7 +12,7 @@
       <h1>WHOOP authorization returned</h1>
       <p class="lede">Copy the command below into your local terminal to exchange the authorization code. This static page does not store the code or send it anywhere else.</p>
 
-      <div id="missing" class="notice" hidden>The callback URL is missing a code or state value. Re-run <code>pulse-ledger auth login</code> and approve access from the generated URL.</div>
+      <div id="missing" class="notice" hidden>The callback URL is missing a code or state value. Re-run <code>PYTHONPATH=src python3 -m pulse_ledger auth login</code> from the repo root and approve access from the generated URL.</div>
 
       <div class="field">
         <label for="code">Code</label>
@@ -23,7 +23,7 @@
         <input id="state" readonly autocomplete="off">
       </div>
 
-      <pre id="command" class="code-box">pulse-ledger auth exchange --code &lt;CODE&gt; --state &lt;STATE&gt;</pre>
+      <pre id="command" class="code-box">PYTHONPATH=src python3 -m pulse_ledger auth exchange --code &lt;CODE&gt; --state &lt;STATE&gt;</pre>
       <div class="actions">
         <button class="button" id="copy" type="button">Copy command</button>
         <a class="button secondary" href="../../privacy/">Privacy policy</a>
@@ -44,7 +44,7 @@
       stateInput.value = state;
 
       if (code && state) {
-        command.textContent = `pulse-ledger auth exchange --code ${shellQuote(code)} --state ${shellQuote(state)}`;
+        command.textContent = `PYTHONPATH=src python3 -m pulse_ledger auth exchange --code ${shellQuote(code)} --state ${shellQuote(state)}`;
       } else {
         missing.hidden = false;
       }
