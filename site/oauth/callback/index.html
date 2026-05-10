@@ -23,7 +23,7 @@
         <input id="state" readonly autocomplete="off">
       </div>
 
-      <pre id="command" class="code-box">PYTHONPATH=src python3 -m pulse_ledger auth exchange --code &lt;CODE&gt; --state &lt;STATE&gt;</pre>
+      <pre id="command" class="code-box">PYTHONPATH=src python3 -m pulse_ledger auth exchange --code=&lt;CODE&gt; --state=&lt;STATE&gt;</pre>
       <div class="actions">
         <button class="button" id="copy" type="button">Copy command</button>
         <a class="button secondary" href="../../privacy/">Privacy policy</a>
@@ -44,7 +44,7 @@
       stateInput.value = state;
 
       if (code && state) {
-        command.textContent = `PYTHONPATH=src python3 -m pulse_ledger auth exchange --code ${shellQuote(code)} --state ${shellQuote(state)}`;
+        command.textContent = `PYTHONPATH=src python3 -m pulse_ledger auth exchange --code=${shellQuote(code)} --state=${shellQuote(state)}`;
       } else {
         missing.hidden = false;
       }
