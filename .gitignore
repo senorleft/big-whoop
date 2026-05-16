@@ -50,6 +50,7 @@ compose.yml
 pyproject.toml
 src/
 tests/
+web/
 docker/
 data/
 scripts/*

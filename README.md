@@ -51,6 +51,57 @@ Use these local settings:
 
 Use the published callback URL in the local app's private environment file. Do not commit that private file.
 
+## Local Ingestion
+
+Install the local package dependencies before syncing:
+
+```bash
+python3 -m pip install -e .
+```
+
+Start RustFS before the first sync. `RUSTFS_ACCESS_KEY` and `RUSTFS_SECRET_KEY` must be set in `.env`.
+
+```bash
+docker compose up -d rustfs
+```
+
+Useful local commands:
+
+```bash
+PYTHONPATH=src python3 -m pulse_ledger auth refresh
+PYTHONPATH=src python3 -m pulse_ledger whoop profile
+PYTHONPATH=src python3 -m pulse_ledger sync whoop --all-available
+PYTHONPATH=src python3 -m pulse_ledger sync whoop --recent-days 14
+PYTHONPATH=src python3 -m pulse_ledger sync whoop --from 2026-05-01 --to 2026-05-10
+PYTHONPATH=src python3 -m pulse_ledger inspect db
+PYTHONPATH=src python3 -m pulse_ledger inspect raw
+```
+
+Sync writes exact WHOOP v2 API JSON responses to RustFS and normalized records to SQLite. The database and raw payloads stay under `data/` and are intentionally ignored by git.
+
+## Local Sleep Lab
+
+Build or refresh the daily sleep rollups after syncing WHOOP data:
+
+```bash
+PYTHONPATH=src python3 -m pulse_ledger metrics sleep rebuild
+PYTHONPATH=src python3 -m pulse_ledger metrics sleep status
+```
+
+Start the private localhost dashboard:
+
+```bash
+pulse-ledger start
+```
+
+Open `http://127.0.0.1:3000/`. `pulse-ledger start` checks whether today's WHOOP sync is current, refreshes recent data when needed, rebuilds daily sleep metrics, starts the local dashboard on `127.0.0.1`, and opens the browser. Stop the managed dashboard process with:
+
+```bash
+pulse-ledger stop
+```
+
+The dashboard reads only derived SQLite rollups and local status metadata. It does not read OAuth tokens, client secrets, RustFS credentials, or raw WHOOP payload JSON.
+
 ## Public Commit Check
 
 Before committing, verify what will be included:
